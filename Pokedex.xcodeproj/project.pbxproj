@@ -16,6 +16,9 @@
 		C5A4C15E2864DB7600F6CDAF /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C15D2864DB7600F6CDAF /* PokedexTests.swift */; };
 		C5A4C1682864DB7700F6CDAF /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1672864DB7700F6CDAF /* PokedexUITests.swift */; };
 		C5A4C16A2864DB7700F6CDAF /* PokedexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1692864DB7700F6CDAF /* PokedexUITestsLaunchTests.swift */; };
+		C5A4C1782864DC3800F6CDAF /* URLFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1772864DC3800F6CDAF /* URLFormater.swift */; };
+		C5A4C17B2864DC7400F6CDAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C17A2864DC7400F6CDAF /* Constants.swift */; };
+		C5A4C17D2864DFF500F6CDAF /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C17C2864DFF500F6CDAF /* TypeAliases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		C5A4C1632864DB7700F6CDAF /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A4C1672864DB7700F6CDAF /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		C5A4C1692864DB7700F6CDAF /* PokedexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C5A4C1772864DC3800F6CDAF /* URLFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFormater.swift; sourceTree = "<group>"; };
+		C5A4C17A2864DC7400F6CDAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C5A4C17C2864DFF500F6CDAF /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		C5A4C1452864DB7200F6CDAF /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				C5A4C1792864DC6000F6CDAF /* Helpers */,
+				C5A4C1762864DC1F00F6CDAF /* APIService */,
 				C5A4C1462864DB7200F6CDAF /* AppDelegate.swift */,
 				C5A4C1482864DB7200F6CDAF /* SceneDelegate.swift */,
 				C5A4C14A2864DB7200F6CDAF /* ViewController.swift */,
@@ -125,6 +133,23 @@
 				C5A4C1692864DB7700F6CDAF /* PokedexUITestsLaunchTests.swift */,
 			);
 			path = PokedexUITests;
+			sourceTree = "<group>";
+		};
+		C5A4C1762864DC1F00F6CDAF /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4C1772864DC3800F6CDAF /* URLFormater.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		C5A4C1792864DC6000F6CDAF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4C17A2864DC7400F6CDAF /* Constants.swift */,
+				C5A4C17C2864DFF500F6CDAF /* TypeAliases.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A4C17D2864DFF500F6CDAF /* TypeAliases.swift in Sources */,
+				C5A4C17B2864DC7400F6CDAF /* Constants.swift in Sources */,
 				C5A4C14B2864DB7200F6CDAF /* ViewController.swift in Sources */,
 				C5A4C1472864DB7200F6CDAF /* AppDelegate.swift in Sources */,
 				C5A4C1492864DB7200F6CDAF /* SceneDelegate.swift in Sources */,
+				C5A4C1782864DC3800F6CDAF /* URLFormater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
