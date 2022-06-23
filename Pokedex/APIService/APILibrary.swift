@@ -31,11 +31,11 @@ final class APILibrary {
         }
     }
     
-    func apiCallPokemonList(comp: @escaping ResultData ) {
+    func apiCallPokemonList(offset: Int, limit: Int,comp: @escaping ResultData ) {
         
+        let params: JSON = ["offset": offset, "limit": limit] as JSON
         
-        
-        let urlReq = URL.getUrl([:], withPathExtension: Constants.PathExt.pokemon).getRequest()
+        let urlReq = URL.getUrl(params, withPathExtension: Constants.PathExt.pokemon).getRequest()
         
         dataSetter(urlReq, comp: comp)
     }
