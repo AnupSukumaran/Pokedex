@@ -8,3 +8,5 @@
 import Foundation
 
 typealias JSON = [String: AnyObject]
+typealias ResultStringCompBlk = (Results<String>) -> Void
+typealias ResultData = (Results<ModelResponse>) -> Void

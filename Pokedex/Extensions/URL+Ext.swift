@@ -1,5 +1,5 @@
 //
-//  URLFormater.swift
+//  URL+Ext.swift
 //  Pokedex
 //
 //  Created by Sukumar Anup Sukumaran on 23/06/2022.
@@ -7,14 +7,9 @@
 
 import Foundation
 
+extension URL {
 
-struct URLFormater {
-    
-    static let shared = URLFormater()
-    private init() {}
-    
-    // create a URL from parameters
-    func returnUrl(scheme:String = Constants.APIBase.scheme,host: String = Constants.APIBase.host, path: String = Constants.APIBase.path, _ parameters: JSON, withPathExtension: String? = nil) -> URL {
+    static func getUrl(scheme:String = Constants.APIBase.scheme,host: String = Constants.APIBase.host, path: String = Constants.APIBase.path, _ parameters: JSON, withPathExtension: String? = nil) -> Self {
         
         var components = URLComponents()
         components.scheme = scheme
@@ -28,7 +23,17 @@ struct URLFormater {
         }
         
         guard let url = components.url else {fatalError("URL Not valid")}
+        
         return url
     }
     
+    func getRequest() -> URLRequest {
+        
+        var req = URLRequest(url: self)
+        req.httpMethod = "GET"
+        req.timeoutInterval = 60
+        return req
+    }
+    
 }
+

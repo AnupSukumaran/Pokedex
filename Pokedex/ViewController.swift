@@ -11,9 +11,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        callAPI()
     }
 
 
+    func callAPI() {
+        
+        APILibrary.shared.apiCallPokemonList { response in
+            switch response {
+            case .Success(let data):
+                
+                let results = data.pokemonAPIData?.results ?? []
+                
+                print("results = \(results.first?.name ?? "None")")
+                
+            case .Error(let error):
+                
+                break
+            }
+        }
+        
+    }
+    
 }
 

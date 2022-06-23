@@ -20,4 +20,8 @@ struct Constants {
         static let pokemon = "/pokemon"
     }
     
+    struct Txt {
+        static let defaultErrorMsg = "Something went wrong!!.Please try again."
+    }
+    
 }
