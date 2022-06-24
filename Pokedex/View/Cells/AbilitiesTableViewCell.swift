@@ -17,18 +17,10 @@ class AbilitiesTableViewCell: UITableViewCell {
         lbAbility.layer.masksToBounds = true
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 extension AbilitiesTableViewCell {
-    
     func config(modelData: Abilities) {
-        
         lbAbility.text = (modelData.ability?.name ?? "--").firstCapitalized
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource  {
+protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     var results: [PokResult] {get set}
     var offsetCnt: Int {get set}
     var limitCnt: Int {get set}
@@ -15,20 +15,47 @@ protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource  {
     var tableReload: ((String) -> Void)? {get set}
     var errorHandler: ((String) -> Void)? {get set}
     var callDetailVC: ((PokemonDetailsModel) -> Void)? {get set}
+    var isSearchBarEmpty: Bool {get}
+    var startedSearching: ((Bool) -> Void)? {get set}
+    var isFiltering: Bool {get}
+    var searchController: UISearchController {get set}
     func callingPokemonAPI(addedOffsetVal: Int , isAdded: Bool)
     func getLastPage()
     func callAPI(offset: Int, limit: Int)
     func getPokemonDetails(urlStr: String?)
+    func filterContentForSearchText(_ searchText: String)
+   
 }
 
 class HomeViewModel:NSObject, HomeViewModelProtocol {
+    
     var results: [PokResult] = []
+    var filteredResults: [PokResult] = []
     var offsetCnt: Int = 0
     var limitCnt: Int = 20
     var totalPgCnt: Int = 0
     var tableReload: ((String) -> Void)?
     var callDetailVC: ((PokemonDetailsModel) -> Void)?
     var errorHandler: ((String) -> Void)?
+    var startedSearching: ((Bool) -> Void)?
+    var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        let condtion = searchController.isActive && !isSearchBarEmpty
+        return condtion
+    }
+    
+    override init() {
+        super.init()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search here"
+    }
 }
 
 extension HomeViewModel {
@@ -38,8 +65,7 @@ extension HomeViewModel {
         isAdded ?
         (self.offsetCnt += addedOffsetVal) :
         (self.offsetCnt -= addedOffsetVal)
-        
-       
+    
         callAPI(offset: self.offsetCnt, limit: limitCnt)
     }
     
@@ -63,7 +89,6 @@ extension HomeViewModel {
         
     }
     
-    
     func getPokemonDetails(urlStr: String?) {
         
         APILibrary.shared.apiCallPokemonDetail(urlStr: urlStr) { response in
@@ -78,8 +103,22 @@ extension HomeViewModel {
         }
         
     }
-    
+
+    func filterContentForSearchText(_ searchText: String) {
+      filteredResults = results.filter { (pokResult: PokResult) -> Bool in
+          return  (pokResult.name ?? "").lowercased().contains(searchText.lowercased())
+      }
+      
+        tableReload?(String(self.totalPgCnt))
+    }
+}
+
+// UITableViewDelegates
+extension HomeViewModel {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+          return filteredResults.count
+        }
         return results.count
     }
     
@@ -89,12 +128,40 @@ extension HomeViewModel {
             fatalError("NO CELL CLASS FOUND")
         }
         
-        cell.config(results[indexPath.row])
+        isFiltering ? cell.config(filteredResults[indexPath.row]) : cell.config(results[indexPath.row])
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isFiltering ?
+        getPokemonDetails(urlStr: filteredResults[indexPath.row].url) :
         getPokemonDetails(urlStr: results[indexPath.row].url)
+        
+    }
+}
+
+//UISearchResultsUpdating
+extension HomeViewModel {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+}
+
+//UISearchBarDelegate
+extension HomeViewModel  {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        startedSearching?(true)
+        return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        startedSearching?(false)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        startedSearching?(false)
     }
 }

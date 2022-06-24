@@ -21,9 +21,9 @@ fileprivate extension UIStoryboard {
 }
 
 extension UIViewController {
-    func navPush(_ controller: UIViewController, title: String = "") {
-//       navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
-//       controller.navigationItem.setHidesBackButton(true, animated: true)
+    func navPush(_ controller: UIViewController, title: String = "Pokedex") {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
+
        navigationController?.pushViewController(controller, animated: true)
     }
     func showDetailViewController(pokemonDetailsModel: PokemonDetailsModel) {

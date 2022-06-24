@@ -10,21 +10,13 @@ import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var pokemonImgView: UIImageView!
-    @IBOutlet weak var lbTitleName: UILabel!
-    
+    @IBOutlet private weak var pokemonImgView: UIImageView!
+    @IBOutlet private weak var lbTitleName: UILabel!
+    @IBOutlet private weak var lbPokeID: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 extension HomeTableViewCell {
@@ -43,9 +35,15 @@ extension HomeTableViewCell {
             pokemonImgView.image = UIImage(named: "pokeball")
             return
         }
-        let imgUrlStr = URL.getUrl( host: Constants.APIBase.imgHost, path: Constants.APIBase.imgPath + id + ".png", [:])
-        print("imgUrlStr = \(imgUrlStr)")
+        setPokeID(id)
+        let imgUrlStr = URL.getUrl( host: Constants.APIBase.imgHost,
+                                    path: Constants.APIBase.imgPath + id + ".png", [:])
         pokemonImgView.sd_setImage(with: imgUrlStr, placeholderImage: UIImage(named: "pokeball"))
+    }
+    
+    func setPokeID(_ id: String) {
+        let pokeID = (Int(id) ?? 0)
+        lbPokeID.text = "#" + (String(format: "%03d", pokeID))
     }
 }
 
