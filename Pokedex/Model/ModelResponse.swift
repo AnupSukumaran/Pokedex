@@ -10,7 +10,8 @@ import Foundation
 final class ModelResponse: Codable {
     var pokemonAPIData: PokemonData?
     
-    init(data: Data) throws {        
+    init(data: Data) throws {
+        
         pokemonAPIData = try? JSONDecoder().decode(PokemonData.self, from: data)
 
         

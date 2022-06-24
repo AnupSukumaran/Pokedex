@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Pokedex-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,45 +16,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VZw-ps-Dbx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="719"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VZw-ps-Dbx">
+                                <rect key="frame" x="0.0" y="88" width="413" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeTableViewCell" rowHeight="68" id="nN0-Qu-yqu" customClass="HomeTableViewCell" customModule="Pokedex" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeTableViewCell" rowHeight="98" id="nN0-Qu-yqu" customClass="HomeTableViewCell" customModule="Pokedex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="413" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nN0-Qu-yqu" id="X5i-u8-ltF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="413" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J15-oI-Hs4">
-                                                    <rect key="frame" x="25" y="0.0" width="364" height="68"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eOB-A3-TcO">
+                                                    <rect key="frame" x="20" y="0.0" width="373" height="98"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokeball-Vector-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="iVl-ia-2Qy">
+                                                            <rect key="frame" x="0.0" y="11.5" width="75" height="75"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="75" id="Myk-3I-PBm"/>
+                                                                <constraint firstAttribute="height" constant="75" id="Vwd-lY-23U"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J15-oI-Hs4">
+                                                            <rect key="frame" x="91" y="37.5" width="282" height="23"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="J15-oI-Hs4" secondAttribute="trailing" constant="25" id="8q5-Tz-BDf"/>
-                                                <constraint firstItem="J15-oI-Hs4" firstAttribute="leading" secondItem="X5i-u8-ltF" secondAttribute="leading" constant="25" id="LkO-yp-oWi"/>
-                                                <constraint firstItem="J15-oI-Hs4" firstAttribute="top" secondItem="X5i-u8-ltF" secondAttribute="top" id="r1h-Rf-jwO"/>
-                                                <constraint firstAttribute="bottom" secondItem="J15-oI-Hs4" secondAttribute="bottom" id="u7j-CO-22T"/>
+                                                <constraint firstAttribute="trailing" secondItem="eOB-A3-TcO" secondAttribute="trailing" constant="20" id="4Ev-Ax-ZCa"/>
+                                                <constraint firstItem="eOB-A3-TcO" firstAttribute="top" secondItem="X5i-u8-ltF" secondAttribute="top" id="JQv-Kb-bGH"/>
+                                                <constraint firstItem="eOB-A3-TcO" firstAttribute="leading" secondItem="X5i-u8-ltF" secondAttribute="leading" constant="20" id="aaa-JH-Yir"/>
+                                                <constraint firstAttribute="bottom" secondItem="eOB-A3-TcO" secondAttribute="bottom" id="e9U-bP-Oz9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lbTitleName" destination="J15-oI-Hs4" id="XFf-V2-tEr"/>
+                                            <outlet property="pokemonImgView" destination="iVl-ia-2Qy" id="lDB-A9-2o8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JX-Yt-p8J">
-                                <rect key="frame" x="0.0" y="807" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="807" width="413" height="55"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G2B-fb-Pqo">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="55"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G2B-fb-Pqo">
+                                        <rect key="frame" x="20" y="0.0" width="373" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEx-fW-9d3">
-                                                <rect key="frame" x="0.0" y="11" width="112" height="33.5"/>
+                                                <rect key="frame" x="0.0" y="7.5" width="70" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="9nW-uz-FT8"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Cc9-yu-d2f"/>
+                                                </constraints>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="FIrst">
@@ -64,11 +81,15 @@
                                                     <action selector="btnFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hLH-wA-exC"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-lz-mZS">
-                                                <rect key="frame" x="112" y="12" width="150" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-lz-mZS">
+                                                <rect key="frame" x="70" y="7.5" width="233" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-7d-cm2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="55.5" id="AFB-hK-tbC"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Lnr-A9-jiQ"/>
+                                                        </constraints>
                                                         <color key="tintColor" systemColor="systemRedColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="backward.frame" catalog="system"/>
@@ -76,14 +97,18 @@
                                                             <action selector="btnBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btL-ep-pVG"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dro-MJ-vwn">
-                                                        <rect key="frame" x="50" y="4" width="50" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dro-MJ-vwn">
+                                                        <rect key="frame" x="55.5" y="2.5" width="122" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="8Pd-Qt-hoP"/>
+                                                            <constraint firstAttribute="height" constant="35" id="yi7-5N-wv4"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sde-iX-G7j">
-                                                        <rect key="frame" x="100" y="0.0" width="50" height="31"/>
+                                                        <rect key="frame" x="177.5" y="0.0" width="55.5" height="40"/>
                                                         <color key="tintColor" systemColor="systemRedColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="forward.frame" catalog="system"/>
@@ -93,11 +118,12 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="gn3-IR-UP3"/>
+                                                    <constraint firstItem="KWf-7d-cm2" firstAttribute="height" secondItem="Sde-iX-G7j" secondAttribute="height" id="ibe-9P-eah"/>
+                                                    <constraint firstItem="KWf-7d-cm2" firstAttribute="width" secondItem="Sde-iX-G7j" secondAttribute="width" id="rWW-gh-i3W"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2r-ao-BF5">
-                                                <rect key="frame" x="262" y="11" width="112" height="33.5"/>
+                                                <rect key="frame" x="303" y="7.5" width="70" height="40"/>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Last">
@@ -109,33 +135,34 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="E2r-ao-BF5" firstAttribute="width" secondItem="HEx-fW-9d3" secondAttribute="width" id="4ac-dp-zNu"/>
+                                            <constraint firstItem="HEx-fW-9d3" firstAttribute="height" secondItem="E2r-ao-BF5" secondAttribute="height" id="TGd-S4-lef"/>
+                                            <constraint firstItem="HEx-fW-9d3" firstAttribute="width" secondItem="E2r-ao-BF5" secondAttribute="width" id="klx-cE-wIj"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="G2B-fb-Pqo" secondAttribute="bottom" id="TLF-7y-T6g"/>
-                                    <constraint firstAttribute="height" constant="55" id="chb-Bd-pT0"/>
-                                    <constraint firstAttribute="trailing" secondItem="G2B-fb-Pqo" secondAttribute="trailing" constant="20" id="e2x-pi-fFS"/>
-                                    <constraint firstItem="G2B-fb-Pqo" firstAttribute="top" secondItem="8JX-Yt-p8J" secondAttribute="top" id="iVG-Vm-Lot"/>
-                                    <constraint firstItem="G2B-fb-Pqo" firstAttribute="leading" secondItem="8JX-Yt-p8J" secondAttribute="leading" constant="20" id="lzr-aX-2qH"/>
+                                    <constraint firstAttribute="trailing" secondItem="G2B-fb-Pqo" secondAttribute="trailing" constant="20" id="LeV-5o-NgJ"/>
+                                    <constraint firstItem="G2B-fb-Pqo" firstAttribute="leading" secondItem="8JX-Yt-p8J" secondAttribute="leading" constant="20" id="Ncj-CJ-nT9"/>
+                                    <constraint firstAttribute="bottom" secondItem="G2B-fb-Pqo" secondAttribute="bottom" id="YHL-xo-2cL"/>
+                                    <constraint firstItem="G2B-fb-Pqo" firstAttribute="top" secondItem="8JX-Yt-p8J" secondAttribute="top" id="hof-RU-x5p"/>
+                                    <constraint firstAttribute="height" constant="55" id="s12-rO-ua0"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="top" secondItem="VZw-ps-Dbx" secondAttribute="bottom" id="9gl-YH-cc4"/>
-                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Igb-XN-pKZ"/>
-                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TKA-bZ-WQ6"/>
-                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cQ3-2T-ixw"/>
-                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="h4J-5m-NBH"/>
-                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nt8-S8-CWI"/>
-                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xkr-sM-Hmy"/>
+                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="67e-S3-uXD"/>
+                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NLF-cI-Jfo"/>
+                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VJd-g2-CMk"/>
+                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="top" secondItem="VZw-ps-Dbx" secondAttribute="bottom" id="XWK-cr-2xW"/>
+                            <constraint firstItem="8JX-Yt-p8J" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="i9p-cV-zbN"/>
+                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ije-vA-rkk"/>
+                            <constraint firstItem="VZw-ps-Dbx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xy6-6a-JEd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uRV-aY-tN2"/>
+                    <navigationItem key="navigationItem" title="Pokedex" id="uRV-aY-tN2"/>
                     <connections>
                         <outlet property="btnBack" destination="KWf-7d-cm2" id="XT4-Bs-o1g"/>
                         <outlet property="btnFirst" destination="HEx-fW-9d3" id="NZV-AZ-ht5"/>
@@ -169,6 +196,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pokeball-Vector-Logo" width="262" height="262"/>
         <image name="backward.frame" catalog="system" width="128" height="99"/>
         <image name="forward.frame" catalog="system" width="128" height="99"/>
         <systemColor name="systemBackgroundColor">

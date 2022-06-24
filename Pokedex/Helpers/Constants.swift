@@ -14,6 +14,8 @@ struct Constants {
         static let scheme = "https"
         static let host = "pokeapi.co"
         static let path = "/api/v2"
+        static let imgHost = "raw.githubusercontent.com"
+        static let imgPath = "/PokeAPI/sprites/master/sprites/pokemon/"
     }
     
     struct PathExt {

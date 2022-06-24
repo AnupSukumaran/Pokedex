@@ -26,19 +26,23 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         pokemonTableView.delegate = viewModel
         pokemonTableView.dataSource = viewModel
-        viewModel?.callAPI(offset: 0, limit: 1)
+        viewModelFuncs()
     }
     
     @IBAction func btnFirst(_ sender: Any) {
+        viewModelFuncs()
     }
     
     @IBAction func btnBack(_ sender: Any) {
+        viewModel?.callingPokemonAPI(addedOffsetVal: 20, isAdded: false)
     }
     
     @IBAction func btnFront(_ sender: Any) {
+        viewModel?.callingPokemonAPI(addedOffsetVal: 20)
     }
     
     @IBAction func btnLast(_ sender: Any) {
+        viewModel?.getLastPage()
     }
     
     
@@ -46,14 +50,24 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     
+    func viewModelFuncs() {
+        guard let viewM = viewModel else {
+            fatalError("ViewModel Missing!")
+        }
+        viewM.offsetCnt = 0
+        viewM.callAPI()
+    }
+    
     func setHandler() {
         guard let viewM = viewModel else {
             fatalError("ViewModel Missing!")
         }
         
-        viewM.tableReload = { [weak self] in
+        viewM.tableReload = { [weak self] cnt in
             guard let vc = self else {return}
             vc.pokemonTableView.reloadData()
+            let offsetCnt = viewM.offsetCnt
+            vc.lbPageNum.text = "\(offsetCnt)/\(cnt)"
         }
     }
     

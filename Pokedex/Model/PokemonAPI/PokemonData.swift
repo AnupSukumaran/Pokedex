@@ -28,10 +28,12 @@ struct PokemonData : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		count = try values.decodeIfPresent(Int.self, forKey: .count)
-		next = try values.decodeIfPresent(String.self, forKey: .next)
-		previous = try values.decodeIfPresent(String.self, forKey: .previous)
-		results = try values.decodeIfPresent([PokResult].self, forKey: .results)
+		count = try? values.decodeIfPresent(Int.self, forKey: .count) ?? nil
+		next = try? values.decodeIfPresent(String.self, forKey: .next) ?? nil
+		previous = try? values.decodeIfPresent(String.self, forKey: .previous) ?? nil
+		results = try? values.decodeIfPresent([PokResult].self, forKey: .results) ?? nil
+        
+        print("data")
 	}
 
 }

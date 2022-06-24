@@ -22,6 +22,7 @@ final class APILibrary {
                return
             }
             guard let data = response.data else { return }
+            
             do {
                 let modelResponse = try ModelResponse(data: data)
                 comp(.Success(modelResponse))

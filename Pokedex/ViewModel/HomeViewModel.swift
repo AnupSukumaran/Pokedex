@@ -9,24 +9,47 @@ import UIKit
 
 protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource  {
     var results: [PokResult] {get set}
-    var tableReload: (() -> Void)? {get set}
+    var offsetCnt: Int {get set}
+    var limitCnt: Int {get set}
+    var totalPgCnt: Int {get set}
+    var tableReload: ((String) -> Void)? {get set}
+    func callingPokemonAPI(addedOffsetVal: Int , isAdded: Bool)
+    func getLastPage()
     func callAPI(offset: Int, limit: Int)
 }
 
 class HomeViewModel:NSObject, HomeViewModelProtocol {
     var results: [PokResult] = []
-    var tableReload: (() -> Void)?
+    var offsetCnt: Int = 0
+    var limitCnt: Int = 20
+    var totalPgCnt: Int = 0
+    var tableReload: ((String) -> Void)?
 }
 
 extension HomeViewModel {
     
-    func callAPI(offset: Int, limit: Int) {
+    func callingPokemonAPI(addedOffsetVal: Int = 0, isAdded: Bool = true) {
+        
+        isAdded ?
+        (self.offsetCnt += addedOffsetVal) :
+        (self.offsetCnt -= addedOffsetVal)
+        
+       
+        callAPI(offset: self.offsetCnt, limit: limitCnt)
+    }
+    
+    func getLastPage() {
+        offsetCnt = totalPgCnt - limitCnt
+        callAPI(offset: offsetCnt, limit: limitCnt)
+    }
+    
+    func callAPI(offset: Int = 0, limit: Int = 20) {
         APILibrary.shared.apiCallPokemonList(offset: offset, limit: limit) { response in
             switch response {
             case .Success(let data):
-                let pageCnt = data.pokemonAPIData?.count ?? 0
+                self.totalPgCnt = data.pokemonAPIData?.count ?? 0
                 self.results = data.pokemonAPIData?.results ?? []
-                self.tableReload?()
+                self.tableReload?(String(self.totalPgCnt))
                 
             case .Error(let error):
                 print("Error = \(error)")
