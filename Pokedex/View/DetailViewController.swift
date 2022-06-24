@@ -18,7 +18,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var lbHeight: UILabel!
     @IBOutlet weak var lbDefence: UILabel!
     @IBOutlet weak var lbBaseAttack: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var abilitiesListView: UITableView!
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var statsView: UIView!
+    @IBOutlet weak var abilitiesView: UIView!
+    
     
     
     var viewModel: DetailViewModelProtocol? {
@@ -29,7 +34,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        abilitiesListView.delegate = viewModel
+        abilitiesListView.dataSource = viewModel
         setValues()
+        settingViewCurves()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        adaptingContentWithTable()
         
     }
     
@@ -51,6 +66,19 @@ extension DetailViewController {
         lbWeight.text = viewM.pokemonWeight
         lbDefence.text = viewM.pokemonDefence
         lbBaseAttack.text = viewM.pokemonBaseAtt
+        
     }
     
+    func settingViewCurves() {
+        nameView.layer.cornerRadius = 10
+        statsView.layer.cornerRadius = 10
+        abilitiesView.layer.cornerRadius = 10
+    }
+    
+    func adaptingContentWithTable() {
+        abilitiesListView.reloadData()
+        abilitiesListView.layoutIfNeeded()
+        tableHeight.constant =  abilitiesListView.contentSize.height
+
+    }
 }

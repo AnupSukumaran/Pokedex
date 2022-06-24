@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol DetailViewModelProtocol {
+protocol DetailViewModelProtocol: UITableViewDataSource, UITableViewDelegate {
     var pokemonDetailsModel: PokemonDetailsModel? {get set}
     var pokemonImgUrlStr: String? {get}
     var pokemonName: String {get}
@@ -18,9 +18,12 @@ protocol DetailViewModelProtocol {
     var pokemonStates: [Stats] {get}
     var pokemonDefence: String {get}
     var pokemonBaseAtt: String {get}
+    var abilitiesArr : [Abilities] {get}
 }
 
 class DetailViewModel: NSObject, DetailViewModelProtocol {
+    
+    
     
     var pokemonDetailsModel: PokemonDetailsModel?
     var pokemonImgUrlStr: String? {
@@ -59,6 +62,10 @@ class DetailViewModel: NSObject, DetailViewModelProtocol {
         return String(states?.base_stat ?? 0)
     }
     
+    var abilitiesArr : [Abilities] {
+        pokemonDetailsModel?.abilities ?? []
+    }
+    
     
     
     override init() {}
@@ -67,6 +74,20 @@ class DetailViewModel: NSObject, DetailViewModelProtocol {
         self.pokemonDetailsModel = pokemonDetailsModel
     }
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return abilitiesArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AbilitiesTableViewCell", for: indexPath) as? AbilitiesTableViewCell else {
+            fatalError("No Cell Class Found")
+        }
+        
+        cell.config(modelData: abilitiesArr[indexPath.row])
+                
+        return cell
+    }
 
     
 }
