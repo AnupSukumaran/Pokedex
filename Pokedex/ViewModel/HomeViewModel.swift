@@ -13,9 +13,12 @@ protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource  {
     var limitCnt: Int {get set}
     var totalPgCnt: Int {get set}
     var tableReload: ((String) -> Void)? {get set}
+    var errorHandler: ((String) -> Void)? {get set}
+    var callDetailVC: ((PokemonDetailsModel) -> Void)? {get set}
     func callingPokemonAPI(addedOffsetVal: Int , isAdded: Bool)
     func getLastPage()
     func callAPI(offset: Int, limit: Int)
+    func getPokemonDetails(urlStr: String?)
 }
 
 class HomeViewModel:NSObject, HomeViewModelProtocol {
@@ -24,6 +27,8 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
     var limitCnt: Int = 20
     var totalPgCnt: Int = 0
     var tableReload: ((String) -> Void)?
+    var callDetailVC: ((PokemonDetailsModel) -> Void)?
+    var errorHandler: ((String) -> Void)?
 }
 
 extension HomeViewModel {
@@ -52,7 +57,23 @@ extension HomeViewModel {
                 self.tableReload?(String(self.totalPgCnt))
                 
             case .Error(let error):
-                print("Error = \(error)")
+                self.errorHandler?(error)
+            }
+        }
+        
+    }
+    
+    
+    func getPokemonDetails(urlStr: String?) {
+        
+        APILibrary.shared.apiCallPokemonDetail(urlStr: urlStr) { response in
+            switch response {
+            case .Success(let data):
+                guard let pokeDetail = data.pokemonDetailsModel else {return}
+                self.callDetailVC?(pokeDetail)
+                
+            case .Error(let error):
+                self.errorHandler?(error)
             }
         }
         
@@ -71,5 +92,9 @@ extension HomeViewModel {
         cell.config(results[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getPokemonDetails(urlStr: results[indexPath.row].url)
     }
 }

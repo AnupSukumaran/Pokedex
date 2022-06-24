@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lbPageNum: UILabel!
     @IBOutlet weak var btnFront: UIButton!
     
-    var viewModel: HomeViewModel? {
+    var viewModel: HomeViewModelProtocol? {
         didSet {
             setHandler()
         }
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func btnFront(_ sender: Any) {
-        viewModel?.callingPokemonAPI(addedOffsetVal: 20)
+        viewModel?.callingPokemonAPI(addedOffsetVal: 20, isAdded: true)
     }
     
     @IBAction func btnLast(_ sender: Any) {
@@ -55,7 +55,7 @@ extension HomeViewController {
             fatalError("ViewModel Missing!")
         }
         viewM.offsetCnt = 0
-        viewM.callAPI()
+        viewM.callAPI(offset: 0, limit: viewM.limitCnt)
     }
     
     func setHandler() {
@@ -68,6 +68,15 @@ extension HomeViewController {
             vc.pokemonTableView.reloadData()
             let offsetCnt = viewM.offsetCnt
             vc.lbPageNum.text = "\(offsetCnt)/\(cnt)"
+        }
+        
+        viewM.callDetailVC = { [weak self] modelData in
+            guard let vc = self else {return}
+            vc.showDetailViewController(pokemonDetailsModel: modelData)
+        }
+        
+        viewM.errorHandler = { erro in
+            print("Error = \(erro)")
         }
     }
     

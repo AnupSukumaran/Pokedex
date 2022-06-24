@@ -22,6 +22,10 @@ struct Constants {
         static let pokemon = "/pokemon"
     }
     
+    struct Keys {
+        static let detailViewController = "DetailViewController"
+    }
+    
     struct Txt {
         static let defaultErrorMsg = "Something went wrong!!.Please try again."
     }

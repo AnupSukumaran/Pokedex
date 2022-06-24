@@ -41,4 +41,9 @@ final class APILibrary {
         dataSetter(urlReq, comp: comp)
     }
     
+    func apiCallPokemonDetail(urlStr: String?, comp: @escaping ResultData ) {
+        guard let urlReq = URL(string: urlStr ?? "")?.getRequest() else {return}
+        dataSetter(urlReq, comp: comp)
+    }
+    
 }
