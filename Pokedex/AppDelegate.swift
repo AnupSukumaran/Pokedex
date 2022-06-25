@@ -17,12 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let navVC = window?.rootViewController as? UINavigationController else {return true}
         guard let cntr = navVC.topViewController as? HomeViewController else {return true}
         cntr.viewModel = HomeViewModel()
-        window?.overrideUserInterfaceStyle = .light
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -30,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
