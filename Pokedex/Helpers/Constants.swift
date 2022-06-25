@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 struct Constants {
-    
     struct APIBase {
         static let scheme = "https"
         static let host = "pokeapi.co"
@@ -17,17 +15,13 @@ struct Constants {
         static let imgHost = "raw.githubusercontent.com"
         static let imgPath = "/PokeAPI/sprites/master/sprites/pokemon/"
     }
-    
     struct PathExt {
         static let pokemon = "/pokemon"
     }
-    
     struct Keys {
         static let detailViewController = "DetailViewController"
     }
-    
     struct Txt {
         static let defaultErrorMsg = "Something went wrong!!.Please try again."
     }
-    
 }
