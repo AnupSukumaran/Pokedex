@@ -101,6 +101,11 @@ extension HomeViewController {
             cntr.baseBtnsView.isUserInteractionEnabled = !isSearching
         }
         
+        viewM.didSelectedHandler = { [weak self] in
+            guard let cntr = self else {return}
+            cntr.activityStartAction(true)
+        }
+        
         viewM.errorHandler = { [weak self] erro in
             guard let cntr = self else {return}
             UIAlertController.showAlert(title: "Message", message: erro, buttonTitle: "OK", selfClass: cntr)

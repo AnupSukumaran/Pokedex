@@ -24,8 +24,8 @@ struct Ability : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		url = try values.decodeIfPresent(String.self, forKey: .url)
+		name = try? values.decodeIfPresent(String.self, forKey: .name) ?? nil
+		url = try? values.decodeIfPresent(String.self, forKey: .url) ?? nil
 	}
 
 }

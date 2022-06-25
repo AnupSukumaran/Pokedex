@@ -28,10 +28,10 @@ struct XY : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_female = try values.decodeIfPresent(String.self, forKey: .front_female)
-		front_shiny = try values.decodeIfPresent(String.self, forKey: .front_shiny)
-		front_shiny_female = try values.decodeIfPresent(String.self, forKey: .front_shiny_female)
+		front_default = try? values.decodeIfPresent(String.self, forKey: .front_default) ?? nil
+		front_female = try? values.decodeIfPresent(String.self, forKey: .front_female) ?? nil
+		front_shiny = try? values.decodeIfPresent(String.self, forKey: .front_shiny) ?? nil
+		front_shiny_female = try? values.decodeIfPresent(String.self, forKey: .front_shiny_female) ?? nil
 	}
 
 }

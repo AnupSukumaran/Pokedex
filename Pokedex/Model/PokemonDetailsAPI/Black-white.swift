@@ -38,15 +38,15 @@ struct BlackWhite : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		animated = try values.decodeIfPresent(Animated.self, forKey: .animated)
-		back_default = try values.decodeIfPresent(String.self, forKey: .back_default)
-		back_female = try values.decodeIfPresent(String.self, forKey: .back_female)
-		back_shiny = try values.decodeIfPresent(String.self, forKey: .back_shiny)
-		back_shiny_female = try values.decodeIfPresent(String.self, forKey: .back_shiny_female)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_female = try values.decodeIfPresent(String.self, forKey: .front_female)
-		front_shiny = try values.decodeIfPresent(String.self, forKey: .front_shiny)
-		front_shiny_female = try values.decodeIfPresent(String.self, forKey: .front_shiny_female)
+		animated = try? values.decodeIfPresent(Animated.self, forKey: .animated) ?? nil
+		back_default = try? values.decodeIfPresent(String.self, forKey: .back_default) ?? nil
+		back_female = try? values.decodeIfPresent(String.self, forKey: .back_female) ?? nil
+		back_shiny = try? values.decodeIfPresent(String.self, forKey: .back_shiny) ?? nil
+		back_shiny_female = try? values.decodeIfPresent(String.self, forKey: .back_shiny_female) ?? nil
+		front_default = try? values.decodeIfPresent(String.self, forKey: .front_default) ?? nil
+		front_female = try? values.decodeIfPresent(String.self, forKey: .front_female) ?? nil
+		front_shiny = try? values.decodeIfPresent(String.self, forKey: .front_shiny) ?? nil
+		front_shiny_female = try? values.decodeIfPresent(String.self, forKey: .front_shiny_female) ?? nil
 	}
 
 }

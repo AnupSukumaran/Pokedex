@@ -36,14 +36,14 @@ struct Crystal : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		back_default = try values.decodeIfPresent(String.self, forKey: .back_default)
-		back_shiny = try values.decodeIfPresent(String.self, forKey: .back_shiny)
-		back_shiny_transparent = try values.decodeIfPresent(String.self, forKey: .back_shiny_transparent)
-		back_transparent = try values.decodeIfPresent(String.self, forKey: .back_transparent)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_shiny = try values.decodeIfPresent(String.self, forKey: .front_shiny)
-		front_shiny_transparent = try values.decodeIfPresent(String.self, forKey: .front_shiny_transparent)
-		front_transparent = try values.decodeIfPresent(String.self, forKey: .front_transparent)
+		back_default = try? values.decodeIfPresent(String.self, forKey: .back_default) ?? nil
+		back_shiny = try? values.decodeIfPresent(String.self, forKey: .back_shiny) ?? nil
+		back_shiny_transparent = try? values.decodeIfPresent(String.self, forKey: .back_shiny_transparent) ?? nil
+		back_transparent = try? values.decodeIfPresent(String.self, forKey: .back_transparent) ?? nil
+		front_default = try? values.decodeIfPresent(String.self, forKey: .front_default) ?? nil
+		front_shiny = try? values.decodeIfPresent(String.self, forKey: .front_shiny) ?? nil
+		front_shiny_transparent = try? values.decodeIfPresent(String.self, forKey: .front_shiny_transparent) ?? nil
+		front_transparent = try? values.decodeIfPresent(String.self, forKey: .front_transparent) ?? nil
 	}
 
 }

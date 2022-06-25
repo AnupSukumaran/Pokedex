@@ -19,6 +19,7 @@ protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource, UISe
     var startedSearching: ((Bool) -> Void)? {get set}
     var isFiltering: Bool {get}
     var searchController: UISearchController {get set}
+    var didSelectedHandler:(() -> Void)? {get set}
     func callingPokemonAPI(addedOffsetVal: Int , isAdded: Bool)
     func getLastPage()
     func callAPI(offset: Int, limit: Int)
@@ -39,6 +40,7 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
     var errorHandler: ((String) -> Void)?
     var startedSearching: ((Bool) -> Void)?
     var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    var didSelectedHandler:(() -> Void)?
     
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
@@ -55,6 +57,8 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search here"
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.tintColor = .black
     }
 }
 
@@ -94,7 +98,11 @@ extension HomeViewModel {
         APILibrary.shared.apiCallPokemonDetail(urlStr: urlStr) { response in
             switch response {
             case .Success(let data):
-                guard let pokeDetail = data.pokemonDetailsModel else {return}
+                guard let pokeDetail = data.pokemonDetailsModel else {
+                    self.errorHandler?("No Details Found!")
+                    return
+                    
+                }
                 self.callDetailVC?(pokeDetail)
                 
             case .Error(let error):
@@ -135,6 +143,7 @@ extension HomeViewModel {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectedHandler?()
         isFiltering ?
         getPokemonDetails(urlStr: filteredResults[indexPath.row].url) :
         getPokemonDetails(urlStr: results[indexPath.row].url)

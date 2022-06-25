@@ -32,12 +32,12 @@ struct Yellow : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		back_default = try values.decodeIfPresent(String.self, forKey: .back_default)
-		back_gray = try values.decodeIfPresent(String.self, forKey: .back_gray)
-		back_transparent = try values.decodeIfPresent(String.self, forKey: .back_transparent)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_gray = try values.decodeIfPresent(String.self, forKey: .front_gray)
-		front_transparent = try values.decodeIfPresent(String.self, forKey: .front_transparent)
+		back_default = try? values.decodeIfPresent(String.self, forKey: .back_default) ?? nil
+		back_gray = try? values.decodeIfPresent(String.self, forKey: .back_gray) ?? nil
+		back_transparent = try? values.decodeIfPresent(String.self, forKey: .back_transparent) ?? nil
+		front_default = try? values.decodeIfPresent(String.self, forKey: .front_default) ?? nil
+		front_gray = try? values.decodeIfPresent(String.self, forKey: .front_gray) ?? nil
+		front_transparent = try? values.decodeIfPresent(String.self, forKey: .front_transparent) ?? nil
 	}
 
 }

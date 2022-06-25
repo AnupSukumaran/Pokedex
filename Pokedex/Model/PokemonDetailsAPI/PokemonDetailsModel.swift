@@ -45,24 +45,24 @@ struct PokemonDetailsModel : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		abilities = try values.decodeIfPresent([Abilities].self, forKey: .abilities)
-		base_experience = try values.decodeIfPresent(Int.self, forKey: .base_experience)
-		forms = try values.decodeIfPresent([Forms].self, forKey: .forms)
-		game_indices = try values.decodeIfPresent([Game_indices].self, forKey: .game_indices)
-		height = try values.decodeIfPresent(Int.self, forKey: .height)
-		held_items = try values.decodeIfPresent([String].self, forKey: .held_items)
-		id = try values.decodeIfPresent(Int.self, forKey: .id)
-		is_default = try values.decodeIfPresent(Bool.self, forKey: .is_default)
-		location_area_encounters = try values.decodeIfPresent(String.self, forKey: .location_area_encounters)
-		moves = try values.decodeIfPresent([Moves].self, forKey: .moves)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		order = try values.decodeIfPresent(Int.self, forKey: .order)
-		past_types = try values.decodeIfPresent([String].self, forKey: .past_types)
-		species = try values.decodeIfPresent(Species.self, forKey: .species)
-		sprites = try values.decodeIfPresent(Sprites.self, forKey: .sprites)
-		stats = try values.decodeIfPresent([Stats].self, forKey: .stats)
-		types = try values.decodeIfPresent([Types].self, forKey: .types)
-		weight = try values.decodeIfPresent(Int.self, forKey: .weight)
+		abilities = try? values.decodeIfPresent([Abilities].self, forKey: .abilities) ?? nil
+		base_experience = try? values.decodeIfPresent(Int.self, forKey: .base_experience) ?? nil
+		forms = try? values.decodeIfPresent([Forms].self, forKey: .forms) ?? nil
+		game_indices = try? values.decodeIfPresent([Game_indices].self, forKey: .game_indices) ?? nil
+		height = try? values.decodeIfPresent(Int.self, forKey: .height) ?? nil
+		held_items = try? values.decodeIfPresent([String].self, forKey: .held_items) ?? nil
+		id = try? values.decodeIfPresent(Int.self, forKey: .id) ?? nil
+		is_default = try? values.decodeIfPresent(Bool.self, forKey: .is_default) ?? nil
+		location_area_encounters = try? values.decodeIfPresent(String.self, forKey: .location_area_encounters) ?? nil
+		moves = try? values.decodeIfPresent([Moves].self, forKey: .moves) ?? nil
+		name = try? values.decodeIfPresent(String.self, forKey: .name) ?? nil
+		order = try? values.decodeIfPresent(Int.self, forKey: .order) ?? nil
+		past_types = try? values.decodeIfPresent([String].self, forKey: .past_types) ?? nil
+		species = try? values.decodeIfPresent(Species.self, forKey: .species) ?? nil
+		sprites = try? values.decodeIfPresent(Sprites.self, forKey: .sprites) ?? nil
+		stats = try? values.decodeIfPresent([Stats].self, forKey: .stats) ?? nil
+		types = try? values.decodeIfPresent([Types].self, forKey: .types) ?? nil
+		weight = try? values.decodeIfPresent(Int.self, forKey: .weight) ?? nil
 	}
 
 }

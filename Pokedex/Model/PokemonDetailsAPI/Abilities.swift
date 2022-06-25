@@ -26,9 +26,9 @@ struct Abilities : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		ability = try values.decodeIfPresent(Ability.self, forKey: .ability)
-		is_hidden = try values.decodeIfPresent(Bool.self, forKey: .is_hidden)
-		slot = try values.decodeIfPresent(Int.self, forKey: .slot)
+		ability = try? values.decodeIfPresent(Ability.self, forKey: .ability) ?? nil
+		is_hidden = try? values.decodeIfPresent(Bool.self, forKey: .is_hidden) ?? nil
+		slot = try? values.decodeIfPresent(Int.self, forKey: .slot) ?? nil
 	}
 
 }

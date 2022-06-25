@@ -32,8 +32,6 @@ struct PokemonData : Codable {
 		next = try? values.decodeIfPresent(String.self, forKey: .next) ?? nil
 		previous = try? values.decodeIfPresent(String.self, forKey: .previous) ?? nil
 		results = try? values.decodeIfPresent([PokResult].self, forKey: .results) ?? nil
-        
-        print("data")
 	}
 
 }
