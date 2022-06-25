@@ -40,13 +40,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-H6-6vo">
                                                             <rect key="frame" x="91" y="25.5" width="283" height="47.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J15-oI-Hs4">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J15-oI-Hs4">
                                                                     <rect key="frame" x="0.0" y="0.0" width="283" height="23"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbz-Kq-WiY">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbz-Kq-WiY">
                                                                     <rect key="frame" x="0.0" y="27" width="283" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,7 +87,7 @@
                                                             <constraint firstAttribute="width" constant="70" id="9nW-uz-FT8"/>
                                                             <constraint firstAttribute="height" constant="40" id="Cc9-yu-d2f"/>
                                                         </constraints>
-                                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="FIrst">
                                                             <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="16"/>
@@ -105,27 +105,27 @@
                                                                     <constraint firstAttribute="width" constant="55.5" id="AFB-hK-tbC"/>
                                                                     <constraint firstAttribute="height" constant="40" id="Lnr-A9-jiQ"/>
                                                                 </constraints>
-                                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="backward.frame" catalog="system"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="rightArrow"/>
                                                                 <connections>
                                                                     <action selector="btnBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btL-ep-pVG"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dro-MJ-vwn">
-                                                                <rect key="frame" x="55.5" y="2.5" width="177.5" height="35"/>
+                                                                <rect key="frame" x="55.5" y="2.5" width="133" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="yi7-5N-wv4"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sde-iX-G7j">
                                                                 <rect key="frame" x="188.5" y="0.0" width="55.5" height="40"/>
-                                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="forward.frame" catalog="system"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="leftArrow"/>
                                                                 <connections>
                                                                     <action selector="btnFront:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ttg-GE-3ia"/>
                                                                 </connections>
@@ -138,7 +138,7 @@
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2r-ao-BF5">
                                                         <rect key="frame" x="314" y="10" width="70" height="40"/>
-                                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Last">
                                                             <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="16"/>
@@ -154,7 +154,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.8143442273" green="0.2150720656" blue="0.17447084190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="G2B-fb-Pqo" secondAttribute="trailing" constant="15" id="48u-bh-gtn"/>
                                             <constraint firstAttribute="bottom" secondItem="G2B-fb-Pqo" secondAttribute="bottom" id="HSw-M0-n2X"/>
@@ -226,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="1039.1304347826087" y="97.767857142857139"/>
         </scene>
-        <!--Pokemon-->
+        <!--Detail View Controller-->
         <scene sceneID="C2O-Oo-V8H">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="jYg-3S-AFg" customClass="DetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
@@ -548,9 +548,7 @@
                             <constraint firstAttribute="trailing" secondItem="OJO-YF-B7s" secondAttribute="trailing" id="ul8-qF-ck2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokemon" id="7Ij-fm-o4f">
-                        <barButtonItem key="backBarButtonItem" title="&quot; &quot;" id="607-Nn-lQ2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="7Ij-fm-o4f"/>
                     <connections>
                         <outlet property="abilitiesListView" destination="sFJ-kY-KRD" id="aHl-Zl-vys"/>
                         <outlet property="abilitiesView" destination="lK4-5r-ITW" id="pg2-ax-E0K"/>
@@ -568,7 +566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeA-Ko-zPr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="98"/>
+            <point key="canvasLocation" x="2723.1884057971015" y="97.767857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mw0-XU-t2y">
@@ -590,11 +588,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backward.frame" catalog="system" width="128" height="99"/>
         <image name="bg" width="1920" height="1200"/>
-        <image name="forward.frame" catalog="system" width="128" height="99"/>
+        <image name="leftArrow" width="24" height="24"/>
         <image name="pokeballNoBG" width="200" height="201"/>
         <image name="pokeballSillo" width="27.5" height="27.5"/>
+        <image name="rightArrow" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

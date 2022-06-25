@@ -53,23 +53,25 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
     
     override init() {
         super.init()
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search here"
-        searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.searchBar.tintColor = .black
+        searchCntSetUp()
     }
 }
 
 extension HomeViewModel {
     
+    func searchCntSetUp() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Pokemon"
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.tintColor = .black
+    }
+    
     func callingPokemonAPI(addedOffsetVal: Int = 0, isAdded: Bool = true) {
-        
         isAdded ?
         (self.offsetCnt += addedOffsetVal) :
         (self.offsetCnt -= addedOffsetVal)
-    
         callAPI(offset: self.offsetCnt, limit: limitCnt)
     }
     
@@ -101,7 +103,6 @@ extension HomeViewModel {
                 guard let pokeDetail = data.pokemonDetailsModel else {
                     self.errorHandler?("No Details Found!")
                     return
-                    
                 }
                 self.callDetailVC?(pokeDetail)
                 

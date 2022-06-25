@@ -23,11 +23,7 @@ fileprivate extension UIStoryboard {
 extension UIViewController {
     func navPush(_ controller: UIViewController, title: String = "") {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
-        
-        navigationItem.title = "Pokemon"
-        
         navigationController?.navigationBar.tintColor = .white
-        
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
@@ -37,7 +33,7 @@ extension UIViewController {
     func showDetailViewController(pokemonDetailsModel: PokemonDetailsModel) {
         guard let cntr = UIStoryboard.detailViewController() else {return}
         cntr.viewModel = DetailViewModel(pokemonDetailsModel: pokemonDetailsModel)
-//        let nav = UINavigationController(rootViewController: cntr)
+        cntr.title = "POKEDEX"
         navPush(cntr)
     }
 }
