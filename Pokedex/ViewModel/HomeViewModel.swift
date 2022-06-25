@@ -7,7 +7,8 @@
 
 import UIKit
 
-protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource,
+                                    UISearchResultsUpdating, UISearchBarDelegate {
     var results: [PokResult] {get set}
     var offsetCnt: Int {get set}
     var limitCnt: Int {get set}
@@ -20,16 +21,14 @@ protocol HomeViewModelProtocol: UITableViewDelegate, UITableViewDataSource, UISe
     var isFiltering: Bool {get}
     var searchController: UISearchController {get set}
     var didSelectedHandler:(() -> Void)? {get set}
-    func callingPokemonAPI(addedOffsetVal: Int , isAdded: Bool)
+    func callingPokemonAPI(addedOffsetVal: Int, isAdded: Bool)
     func getLastPage()
     func callAPI(offset: Int, limit: Int)
     func getPokemonDetails(urlStr: String?)
     func filterContentForSearchText(_ searchText: String)
-   
 }
 
-class HomeViewModel:NSObject, HomeViewModelProtocol {
-    
+class HomeViewModel: NSObject, HomeViewModelProtocol {
     var results: [PokResult] = []
     var filteredResults: [PokResult] = []
     var offsetCnt: Int = 0
@@ -41,16 +40,13 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
     var startedSearching: ((Bool) -> Void)?
     var searchController: UISearchController = UISearchController(searchResultsController: nil)
     var didSelectedHandler:(() -> Void)?
-    
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
-    
     var isFiltering: Bool {
         let condtion = searchController.isActive && !isSearchBarEmpty
         return condtion
     }
-    
     override init() {
         super.init()
         searchCntSetUp()
@@ -58,7 +54,6 @@ class HomeViewModel:NSObject, HomeViewModelProtocol {
 }
 
 extension HomeViewModel {
-    
     func searchCntSetUp() {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -67,19 +62,16 @@ extension HomeViewModel {
         searchController.searchBar.searchTextField.backgroundColor = .white
         searchController.searchBar.tintColor = .black
     }
-    
     func callingPokemonAPI(addedOffsetVal: Int = 0, isAdded: Bool = true) {
         isAdded ?
         (self.offsetCnt += addedOffsetVal) :
         (self.offsetCnt -= addedOffsetVal)
         callAPI(offset: self.offsetCnt, limit: limitCnt)
     }
-    
     func getLastPage() {
         offsetCnt = totalPgCnt - limitCnt
         callAPI(offset: offsetCnt, limit: limitCnt)
     }
-    
     func callAPI(offset: Int = 0, limit: Int = 20) {
         APILibrary.shared.apiCallPokemonList(offset: offset, limit: limit) { response in
             switch response {
@@ -87,16 +79,12 @@ extension HomeViewModel {
                 self.totalPgCnt = data.pokemonAPIData?.count ?? 0
                 self.results = data.pokemonAPIData?.results ?? []
                 self.tableReload?(String(self.totalPgCnt))
-                
             case .error(let error):
                 self.errorHandler?(error)
             }
         }
-        
     }
-    
     func getPokemonDetails(urlStr: String?) {
-        
         APILibrary.shared.apiCallPokemonDetail(urlStr: urlStr) { response in
             switch response {
             case .success(let data):
@@ -105,19 +93,16 @@ extension HomeViewModel {
                     return
                 }
                 self.callDetailVC?(pokeDetail)
-                
             case .error(let error):
                 self.errorHandler?(error)
             }
         }
-        
     }
 
     func filterContentForSearchText(_ searchText: String) {
       filteredResults = results.filter { (pokResult: PokResult) -> Bool in
           return  (pokResult.name ?? "").lowercased().contains(searchText.lowercased())
       }
-      
         tableReload?(String(self.totalPgCnt))
     }
 }
@@ -130,29 +115,24 @@ extension HomeViewModel {
         }
         return results.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell",
+                                                       for: indexPath) as? HomeTableViewCell
+        else {
             fatalError("NO CELL CLASS FOUND")
         }
-        
         isFiltering ? cell.config(filteredResults[indexPath.row]) : cell.config(results[indexPath.row])
-        
-        
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectedHandler?()
         isFiltering ?
         getPokemonDetails(urlStr: filteredResults[indexPath.row].url) :
         getPokemonDetails(urlStr: results[indexPath.row].url)
-        
     }
 }
 
-//UISearchResultsUpdating
+// MARK: UISearchResultsUpdating
 extension HomeViewModel {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -160,17 +140,15 @@ extension HomeViewModel {
     }
 }
 
-//UISearchBarDelegate
-extension HomeViewModel  {
+// MARK: UISearchBarDelegate
+extension HomeViewModel {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         startedSearching?(true)
         return true
     }
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         startedSearching?(false)
     }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         startedSearching?(false)
     }

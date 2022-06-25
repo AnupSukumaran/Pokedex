@@ -24,9 +24,8 @@ extension UIViewController {
     func navPush(_ controller: UIViewController, title: String = "") {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .white
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
         navigationController?.navigationBar.topItem?.backBarButtonItem?.title = " "
         navigationController?.pushViewController(controller, animated: true)
     }

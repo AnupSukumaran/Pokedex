@@ -21,7 +21,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var abilitiesView: UIView!
-    
     var viewModel: DetailViewModelProtocol?
 
     override func viewDidLoad() {

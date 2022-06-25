@@ -9,7 +9,6 @@ import UIKit
 import SASCustomAlert
 
 class HomeViewController: UIViewController {
-    
     @IBOutlet weak var pokemonTableView: UITableView!
     @IBOutlet weak var btnFirst: UIButton!
     @IBOutlet weak var btnLast: UIButton!

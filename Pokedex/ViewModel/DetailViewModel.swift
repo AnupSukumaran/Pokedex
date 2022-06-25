@@ -37,20 +37,16 @@ class DetailViewModel: NSObject, DetailViewModelProtocol {
     var pokemonWeight: String {
         String(pokemonDetailsModel?.weight ?? 0)
     }
-    
     var pokemonHeight: String {
         String(pokemonDetailsModel?.height ?? 0)
     }
-    
     var pokemonStates: [Stats] {
         pokemonDetailsModel?.stats ?? []
     }
-    
     var pokemonDefence: String {
         let states = pokemonStates.filter {($0.stat?.name ?? "") == "defense"}.first
         return String(states?.baseStat ?? 0)
     }
-    
     var pokemonBaseAtt: String {
         let states = pokemonStates.filter {($0.stat?.name ?? "") == "attack"}.first
         return String(states?.baseStat ?? 0)

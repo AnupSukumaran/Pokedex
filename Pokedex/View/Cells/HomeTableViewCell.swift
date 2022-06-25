@@ -9,7 +9,6 @@ import UIKit
 import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
-    
     @IBOutlet private weak var pokemonImgView: UIImageView!
     @IBOutlet private weak var lbTitleName: UILabel!
     @IBOutlet private weak var lbPokeID: UILabel!
@@ -21,10 +20,8 @@ class HomeTableViewCell: UITableViewCell {
 
 extension HomeTableViewCell {
     func config(_ model: PokResult) {
-        
         lbTitleName.text = (model.name ?? "").firstCapitalized
         setImage(url: model.url)
-        
     }
     func setImage(url: String?) {
         let urlStr = String((url ?? "").dropLast())
@@ -38,7 +35,6 @@ extension HomeTableViewCell {
                                     path: Constants.APIBase.imgPath + id + ".png", [:])
         pokemonImgView.sd_setImage(with: imgUrlStr, placeholderImage: UIImage(named: "pokeball"))
     }
-    
     func setPokeID(_ id: String) {
         let pokeID = (Int(id) ?? 0)
         lbPokeID.text = "#" + (String(format: "%03d", pokeID))

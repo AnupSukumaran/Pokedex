@@ -23,7 +23,6 @@ extension URL {
             components.queryItems!.append(queryItem)
         }
         guard let url = components.url else {fatalError("URL Not valid")}
-        
         return url
     }
     func getRequest() -> URLRequest {
@@ -32,5 +31,4 @@ extension URL {
         req.timeoutInterval = 60
         return req
     }
-    
 }
