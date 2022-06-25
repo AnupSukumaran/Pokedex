@@ -398,6 +398,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5A4C16D2864DB7700F6CDAF /* Build configuration list for PBXNativeTarget "Pokedex" */;
 			buildPhases = (
+				C57CE499286759C8000A2773 /* Run SwiftLint */,
 				C5A4C13F2864DB7200F6CDAF /* Sources */,
 				C5A4C1402864DB7200F6CDAF /* Frameworks */,
 				C5A4C1412864DB7200F6CDAF /* Resources */,
@@ -526,6 +527,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C57CE499286759C8000A2773 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C5A4C13F2864DB7200F6CDAF /* Sources */ = {

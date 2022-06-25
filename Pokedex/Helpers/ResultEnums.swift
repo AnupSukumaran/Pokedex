@@ -7,8 +7,7 @@
 
 import Foundation
 
-
 enum Results<T> {
-    case Success(T)
-    case Error(String)
+    case success(T)
+    case error(String)
 }

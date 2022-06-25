@@ -13,25 +13,25 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct RubySapphire : Codable {
-	let back_default : String?
-	let back_shiny : String?
-	let front_default : String?
-	let front_shiny : String?
+	let backDefault : String?
+	let backShiny : String?
+	let frontDefault : String?
+	let frontShiny : String?
 
 	enum CodingKeys: String, CodingKey {
 
-		case back_default = "back_default"
-		case back_shiny = "back_shiny"
-		case front_default = "front_default"
-		case front_shiny = "front_shiny"
+		case backDefault = "back_default"
+		case backShiny = "back_shiny"
+		case frontDefault = "front_default"
+		case frontShiny = "front_shiny"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		back_default = try values.decodeIfPresent(String.self, forKey: .back_default)
-		back_shiny = try values.decodeIfPresent(String.self, forKey: .back_shiny)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_shiny = try values.decodeIfPresent(String.self, forKey: .front_shiny)
+		backDefault = try values.decodeIfPresent(String.self, forKey: .backDefault)
+        backShiny = try values.decodeIfPresent(String.self, forKey: .backShiny)
+        frontDefault = try values.decodeIfPresent(String.self, forKey: .frontDefault)
+		frontShiny = try values.decodeIfPresent(String.self, forKey: .frontShiny)
 	}
 
 }
