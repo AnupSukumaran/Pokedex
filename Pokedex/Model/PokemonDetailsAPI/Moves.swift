@@ -7,7 +7,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct Moves: Codable {
 	let move: Move?
-	let versionGroupDetails: [Version_group_details]?
+	let versionGroupDetails: [VersionGroupDetails]?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -18,7 +18,7 @@ struct Moves: Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		move = try values.decodeIfPresent(Move.self, forKey: .move)
-        versionGroupDetails = try values.decodeIfPresent([Version_group_details].self, forKey: .versionGroupDetails)
+        versionGroupDetails = try values.decodeIfPresent([VersionGroupDetails].self, forKey: .versionGroupDetails)
 	}
 
 }

@@ -23,11 +23,9 @@ protocol DetailViewModelProtocol: UITableViewDataSource, UITableViewDelegate {
 
 class DetailViewModel: NSObject, DetailViewModelProtocol {
     
-    
-    
     var pokemonDetailsModel: PokemonDetailsModel?
     var pokemonImgUrlStr: String? {
-        return pokemonDetailsModel?.sprites?.front_default//.other?.home?.front_default
+        return pokemonDetailsModel?.sprites?.frontDefault
     }
     
     var pokemonName: String {

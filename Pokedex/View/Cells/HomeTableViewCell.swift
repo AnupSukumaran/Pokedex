@@ -20,14 +20,12 @@ class HomeTableViewCell: UITableViewCell {
 }
 
 extension HomeTableViewCell {
-    
     func config(_ model: PokResult) {
         
         lbTitleName.text = (model.name ?? "").firstCapitalized
         setImage(url: model.url)
         
     }
-    
     func setImage(url: String?) {
         let urlStr = String((url ?? "").dropLast())
         let urlChars = urlStr.components(separatedBy: "/")
@@ -46,5 +44,3 @@ extension HomeTableViewCell {
         lbPokeID.text = "#" + (String(format: "%03d", pokeID))
     }
 }
-
-

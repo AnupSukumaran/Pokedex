@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var btnFront: UIButton!
     @IBOutlet weak var baseBtnsView: UIView!
     @IBOutlet weak var activityIndic: UIActivityIndicatorView!
-    
     var viewModel: HomeViewModelProtocol? {
         didSet {
             setHandler()
@@ -30,35 +29,28 @@ class HomeViewController: UIViewController {
         searchBarAndTableSetUp()
         viewModelFuncs()
     }
-    
     @IBAction func btnFirst(_ sender: Any) {
         viewModelFuncs()
     }
-    
     @IBAction func btnBack(_ sender: Any) {
         paginationActions(false)
     }
-    
     @IBAction func btnFront(_ sender: Any) {
         paginationActions(true)
     }
-    
     @IBAction func btnLast(_ sender: Any) {
         activityStartAction(true)
         viewModel?.getLastPage()
     }
-    
 }
 
 extension HomeViewController {
-    
     func searchBarAndTableSetUp() {
         pokemonTableView.delegate = viewModel
         pokemonTableView.dataSource = viewModel
         navigationItem.searchController = viewModel?.searchController
         definesPresentationContext = true
     }
-    
     func paginationActions(_ isAdded: Bool) {
         guard let viewM = viewModel else {
             fatalError("ViewModel Missing!")
@@ -66,7 +58,6 @@ extension HomeViewController {
         activityStartAction(true)
         viewModel?.callingPokemonAPI(addedOffsetVal: viewM.limitCnt, isAdded: isAdded)
     }
-    
     func viewModelFuncs() {
         guard let viewM = viewModel else {
             fatalError("ViewModel Missing!")
@@ -75,12 +66,10 @@ extension HomeViewController {
         activityStartAction(true)
         viewM.callAPI(offset: 0, limit: viewM.limitCnt)
     }
-    
     func setHandler() {
         guard let viewM = viewModel else {
             fatalError("ViewModel Missing!")
         }
-        
         viewM.tableReload = { [weak self] cnt in
             guard let cntr = self else {return}
             cntr.pokemonTableView.reloadData()
@@ -88,31 +77,26 @@ extension HomeViewController {
             let offsetCnt = viewM.offsetCnt
             cntr.lbPageNum.text = "\(offsetCnt)/\(cnt)"
         }
-        
         viewM.callDetailVC = { [weak self] modelData in
             guard let cntr = self else {return}
             cntr.activityStartAction(false)
             cntr.showDetailViewController(pokemonDetailsModel: modelData)
         }
-        
         viewM.startedSearching = { [weak self] isSearching in
             guard let cntr = self else {return}
             cntr.baseBtnsView.alpha = isSearching ? 0.5 : 1
             cntr.baseBtnsView.isUserInteractionEnabled = !isSearching
         }
-        
         viewM.didSelectedHandler = { [weak self] in
             guard let cntr = self else {return}
             cntr.activityStartAction(true)
         }
-        
         viewM.errorHandler = { [weak self] erro in
             guard let cntr = self else {return}
             UIAlertController.showAlert(title: "Message", message: erro, buttonTitle: "OK", selfClass: cntr)
             cntr.activityStartAction(false)
         }
     }
-    
     func activityStartAction(_ begin: Bool) {
         self.view.isUserInteractionEnabled = !begin
         self.view.alpha = begin ? 0.5 : 1
@@ -122,5 +106,4 @@ extension HomeViewController {
         }
         activityIndic.startAnimating()
     }
-    
 }

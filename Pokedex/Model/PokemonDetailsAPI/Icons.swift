@@ -7,7 +7,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct Icons: Codable {
 	let frontDefault: String?
-	let frontDemale: String?
+	let frontFemale: String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -18,7 +18,7 @@ struct Icons: Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
         frontDefault = try values.decodeIfPresent(String.self, forKey: .frontDefault)
-        frontDemale = try values.decodeIfPresent(String.self, forKey: .frontDemale)
+        frontFemale = try values.decodeIfPresent(String.self, forKey: .frontFemale)
 	}
 
 }

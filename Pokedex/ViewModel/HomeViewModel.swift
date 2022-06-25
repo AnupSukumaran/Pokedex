@@ -83,12 +83,12 @@ extension HomeViewModel {
     func callAPI(offset: Int = 0, limit: Int = 20) {
         APILibrary.shared.apiCallPokemonList(offset: offset, limit: limit) { response in
             switch response {
-            case .Success(let data):
+            case .success(let data):
                 self.totalPgCnt = data.pokemonAPIData?.count ?? 0
                 self.results = data.pokemonAPIData?.results ?? []
                 self.tableReload?(String(self.totalPgCnt))
                 
-            case .Error(let error):
+            case .error(let error):
                 self.errorHandler?(error)
             }
         }
@@ -99,14 +99,14 @@ extension HomeViewModel {
         
         APILibrary.shared.apiCallPokemonDetail(urlStr: urlStr) { response in
             switch response {
-            case .Success(let data):
+            case .success(let data):
                 guard let pokeDetail = data.pokemonDetailsModel else {
                     self.errorHandler?("No Details Found!")
                     return
                 }
                 self.callDetailVC?(pokeDetail)
                 
-            case .Error(let error):
+            case .error(let error):
                 self.errorHandler?(error)
             }
         }

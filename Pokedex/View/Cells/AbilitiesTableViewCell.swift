@@ -10,7 +10,6 @@ import UIKit
 class AbilitiesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbAbility: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         lbAbility.layer.cornerRadius = 10

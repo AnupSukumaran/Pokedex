@@ -29,8 +29,8 @@ struct Crystal: Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		backDefault = try? values.decodeIfPresent(String.self, forKey: .back_default) ?? nil
-		back_shiny = try? values.decodeIfPresent(String.self, forKey: .back_shiny) ?? nil
+		backDefault = try? values.decodeIfPresent(String.self, forKey: .backDefault) ?? nil
+		backShiny = try? values.decodeIfPresent(String.self, forKey: .backShiny) ?? nil
         backShinyTransparent = try? values.decodeIfPresent(String.self, forKey: .backShinyTransparent) ?? nil
         backTransparent = try? values.decodeIfPresent(String.self, forKey: .backTransparent) ?? nil
         frontDefault = try? values.decodeIfPresent(String.self, forKey: .frontDefault) ?? nil
