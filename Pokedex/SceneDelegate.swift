@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        window?.overrideUserInterfaceStyle = .light
         guard let navVC = window?.rootViewController as? UINavigationController else {return}
         guard let cntr = navVC.topViewController as? HomeViewController else {return}
         cntr.viewModel = HomeViewModel()
