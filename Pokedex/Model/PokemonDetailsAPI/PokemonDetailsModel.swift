@@ -3,7 +3,7 @@ struct PokemonDetailsModel: Codable {
 	let abilities: [Abilities]?
 	let baseExperience: Int?
 	let forms: [Forms]?
-	let gameIndices: [Game_indices]?
+	let gameIndices: [GameIndices]?
 	let height: Int?
 	let heldItems: [String]?
 	let id: Int?
@@ -46,7 +46,7 @@ struct PokemonDetailsModel: Codable {
 		abilities = try? values.decodeIfPresent([Abilities].self, forKey: .abilities) ?? nil
         baseExperience = try? values.decodeIfPresent(Int.self, forKey: .baseExperience) ?? nil
 		forms = try? values.decodeIfPresent([Forms].self, forKey: .forms) ?? nil
-        gameIndices = try? values.decodeIfPresent([Game_indices].self, forKey: .gameIndices) ?? nil
+        gameIndices = try? values.decodeIfPresent([GameIndices].self, forKey: .gameIndices) ?? nil
 		height = try? values.decodeIfPresent(Int.self, forKey: .height) ?? nil
 		heldItems = try? values.decodeIfPresent([String].self, forKey: .heldItems) ?? nil
 		id = try? values.decodeIfPresent(Int.self, forKey: .id) ?? nil

@@ -5,21 +5,21 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Stats : Codable {
-	let base_stat : Int?
-	let effort : Int?
-	let stat : Stat?
+struct Stats: Codable {
+	let baseStat: Int?
+	let effort: Int?
+	let stat: Stat?
 
 	enum CodingKeys: String, CodingKey {
 
-		case base_stat = "base_stat"
-		case effort = "effort"
-		case stat = "stat"
+		case baseStat = "base_stat"
+		case effort
+		case stat
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		base_stat = try values.decodeIfPresent(Int.self, forKey: .base_stat)
+        baseStat = try values.decodeIfPresent(Int.self, forKey: .baseStat)
 		effort = try values.decodeIfPresent(Int.self, forKey: .effort)
 		stat = try values.decodeIfPresent(Stat.self, forKey: .stat)
 	}

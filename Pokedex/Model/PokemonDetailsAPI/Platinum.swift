@@ -5,38 +5,38 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Platinum : Codable {
-	let backDefault : String?
-	let back_female : String?
-	let back_shiny : String?
-	let back_shiny_female : String?
-	let front_default : String?
-	let front_female : String?
-	let frontShiny : String?
-	let frontShiny_female : String?
+struct Platinum: Codable {
+	let backDefault: String?
+	let backFemale: String?
+	let backShiny: String?
+	let backShinyFemale: String?
+	let frontDefault: String?
+	let frontFemale: String?
+	let frontShiny: String?
+	let frontShinyFemale: String?
 
 	enum CodingKeys: String, CodingKey {
 
 		case backDefault = "back_default"
-		case back_female = "back_female"
-		case back_shiny = "back_shiny"
-		case back_shiny_female = "back_shiny_female"
-		case front_default = "front_default"
-		case front_female = "front_female"
+		case backFemale = "back_female"
+		case backShiny = "back_shiny"
+		case backShinyFemale = "back_shiny_female"
+		case frontDefault = "front_default"
+		case frontFemale = "front_female"
 		case frontShiny = "front_shiny"
-		case frontShiny_female = "front_shiny_female"
+		case frontShinyFemale = "front_shiny_female"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		backDefault = try values.decodeIfPresent(String.self, forKey: .backDefault)
-		back_female = try values.decodeIfPresent(String.self, forKey: .back_female)
-		back_shiny = try values.decodeIfPresent(String.self, forKey: .back_shiny)
-		back_shiny_female = try values.decodeIfPresent(String.self, forKey: .back_shiny_female)
-		front_default = try values.decodeIfPresent(String.self, forKey: .front_default)
-		front_female = try values.decodeIfPresent(String.self, forKey: .front_female)
+        backFemale = try values.decodeIfPresent(String.self, forKey: .backFemale)
+        backShiny = try values.decodeIfPresent(String.self, forKey: .backShiny)
+        backShinyFemale = try values.decodeIfPresent(String.self, forKey: .backShinyFemale)
+        frontDefault = try values.decodeIfPresent(String.self, forKey: .frontDefault)
+        frontFemale = try values.decodeIfPresent(String.self, forKey: .frontFemale)
 		frontShiny = try values.decodeIfPresent(String.self, forKey: .frontShiny)
-		frontShiny_female = try values.decodeIfPresent(String.self, forKey: .frontShiny_female)
+        frontShinyFemale = try values.decodeIfPresent(String.self, forKey: .frontShinyFemale)
 	}
 
 }
